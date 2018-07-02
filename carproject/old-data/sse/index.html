@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SSE-Demo</title>
+	</head>
+<body>
+	<div id="show-res"></div>
+	
+	<script>
+		if(typeof(EventSource)!==undefined)
+		{
+			var source = new EventSource('server-data.php');
+			source.onmessage = function(event)
+			{
+				document.getElementById('show-res').innerHTML=event.data+'<br>';
+			}
+			
+		}else{
+			document.getElementById('show-res').innerHTML='Sorry your browser does not support  server-sent event';
+		}
+	</script>
+</body>
+</html>
